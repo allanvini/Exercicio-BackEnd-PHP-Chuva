@@ -66,4 +66,32 @@ class TextWrapTest extends TestCase {
     $this->assertCount(6, $ret);
   }
 
+  /**
+   * Testa a quebra de linha para palavras curtas.
+   *
+   * @covers Galoa\ExerciciosPhp\TextWrap\Resolucao::textWrap
+   */
+  public function testForSmallWords3() {
+    $ret = $this->resolucao->textWrap($this->baseString, 16);
+    $this->assertEquals("Se vi mais longe", $ret[0]);
+    $this->assertEquals("foi por estar de", $ret[1]);
+    $this->assertEquals("pé sobre ombros", $ret[2]);
+    $this->assertEquals("de gigantes", $ret[3]);
+    $this->assertCount(4, $ret);
+  }
+
+  /**
+   * Testa a quebra de linha para palavras curtas.
+   *
+   * @covers Galoa\ExerciciosPhp\TextWrap\Resolucao::textWrap
+   */
+  public function testForSmallWords3() {
+    $ret = $this->resolucao->textWrap($this->baseString, 20);
+    $this->assertEquals("Se vi mais longe foi", $ret[0]);
+    $this->assertEquals("por estar de pé", $ret[1]);
+    $this->assertEquals("sobre ombros de", $ret[2]);
+    $this->assertEquals("gigantes", $ret[3]);
+    $this->assertCount(4, $ret);
+  }
+
 }
