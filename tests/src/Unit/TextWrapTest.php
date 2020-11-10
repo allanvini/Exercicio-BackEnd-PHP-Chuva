@@ -85,7 +85,7 @@ class TextWrapTest extends TestCase {
    *
    * @covers Galoa\ExerciciosPhp\TextWrap\Resolucao::textWrap
    */
-  public function testForSmallWords3() {
+  public function testForSmallWords4() {
     $ret = $this->resolucao->textWrap($this->baseString, 20);
     $this->assertEquals("Se vi mais longe foi", $ret[0]);
     $this->assertEquals("por estar de pé", $ret[1]);
