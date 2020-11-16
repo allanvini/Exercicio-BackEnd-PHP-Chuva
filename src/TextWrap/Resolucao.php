@@ -24,7 +24,34 @@ class Resolucao implements TextWrapInterface {
    * testes unitários.
    */
   public function textWrap(string $text, int $length): array {
-    return explode("\n", wordwrap($text, $length, "\n"));
+    $strArray = explode(' ', $text);
+			
+			print_r($strArray);
+
+            $auxArr = array();
+
+            $size = sizeof($strArray);
+
+            for ($i = 0; $i < $size ; $i++) {
+
+                if (sizeof($auxArr) >= 0){
+                    array_push($auxArr, $strArray[$i]);
+
+                    unset($strArray[$i]);
+
+                    if(strlen($auxArr[sizeof($auxArr)-1]) + strlen($strArray[$i + 1]) <= $length){
+                        if(strlen($auxArr[sizeof($auxArr)-1]) > 0){
+                            $auxArr[sizeof($auxArr)-1] = $auxArr[sizeof($auxArr)-1].' '.$strArray[$i + 1];
+                            unset($strArray[$i]);
+                        }
+                    } else {
+                        array_push($auxArray, $strArray[i + 1]);
+                        unset($strArray[$i]);
+                    }
+                }
+            }
+
+			return $auxArr;
   }
 
 }
